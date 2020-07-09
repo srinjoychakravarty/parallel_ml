@@ -12,14 +12,14 @@ import time
 data = read_csv('train.csv')
 dataset = data.values
 
-X = dataset[:5000, 0:94]   # split data into X and y and sampling from total row entries to save time
-y = dataset[:5000, 94]     
+X = dataset[:2000, 0:94]   # split data into X and y and sampling from total row entries to save time
+y = dataset[:2000, 94]     
 
 label_encoded_y = LabelEncoder().fit_transform(y) 
 
 model = XGBClassifier()
-# number_of_trees = [100, 200, 300, 400, 500]
-number_of_trees = [35, 40, 45, 50, 55]
+number_of_trees = [100, 200, 300, 400, 500]
+# number_of_trees = [60, 70, 80, 90, 100]
 max_depth = [1]
 subsample = [1.0]
 colsample_bytree = [0.18]
@@ -28,7 +28,7 @@ gamma = [0]
 objective = ['binary:logistic']
 reg_alpha = [0.2]
 reg_lambda = [0.4]
-num_threads = [8, 7, 6, 5, 4, 3, 2, 1]
+num_threads = [4, 3, 2, 1]
 param_grid = {'reg_lambda': reg_lambda,'reg_alpha': reg_alpha, 'objective': objective, 'gamma': gamma, 'colsample_bytree': colsample_bytree, 'subsample': subsample, 'max_depth': max_depth, 'n_estimators': number_of_trees, 'learning_rate': learning_rate}
 kfold = StratifiedKFold(n_splits = 10, shuffle = True, random_state = 93)
 
