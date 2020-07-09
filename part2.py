@@ -4,7 +4,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import LabelEncoder
 import matplotlib
-
+matplotlib.use('Agg')  # prevents matplotlib error on discovery cluster
 from matplotlib import pyplot
 import numpy
 import time
@@ -12,8 +12,8 @@ import time
 data = read_csv('train.csv')
 dataset = data.values
 
-X = dataset[:2000, 0:94]   # split data into X and y and sampling from total row entries to save time
-y = dataset[:2000, 94]     
+X = dataset[:12000, 0:94]   # split data into X and y and sampling from total row entries to save time
+y = dataset[:12000, 94]     
 
 label_encoded_y = LabelEncoder().fit_transform(y) 
 
@@ -28,7 +28,7 @@ gamma = [0]
 objective = ['binary:logistic']
 reg_alpha = [0.2]
 reg_lambda = [0.4]
-num_threads = [4, 3, 2, 1]
+num_threads = [8, 7, 6, 5, 4, 3, 2, 1]
 param_grid = {'reg_lambda': reg_lambda,'reg_alpha': reg_alpha, 'objective': objective, 'gamma': gamma, 'colsample_bytree': colsample_bytree, 'subsample': subsample, 'max_depth': max_depth, 'n_estimators': number_of_trees, 'learning_rate': learning_rate}
 kfold = StratifiedKFold(n_splits = 10, shuffle = True, random_state = 93)
 
