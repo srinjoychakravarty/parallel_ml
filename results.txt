@@ -1,0 +1,23 @@
+Number of Threads: 8 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+Best: -0.224999 using {'colsample_bytree': 0.18, 'gamma': 0, 'learning_rate': 0.1, 'max_depth': 1, 'n_estimators': 300, 'objective': 'binary:logistic', 'reg_alpha': 0.2, 'reg_lambda': 0.4, 'subsample': 1.0}
+Elapsed Duration: 465.2535653114319
+Number of Threads: 7 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+Best: -0.224999 using {'colsample_bytree': 0.18, 'gamma': 0, 'learning_rate': 0.1, 'max_depth': 1, 'n_estimators': 300, 'objective': 'binary:logistic', 'reg_alpha': 0.2, 'reg_lambda': 0.4, 'subsample': 1.0}
+Elapsed Duration: 359.6405408382416
+Number of Threads: 6 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+Best: -0.224999 using {'colsample_bytree': 0.18, 'gamma': 0, 'learning_rate': 0.1, 'max_depth': 1, 'n_estimators': 300, 'objective': 'binary:logistic', 'reg_alpha': 0.2, 'reg_lambda': 0.4, 'subsample': 1.0}
+Elapsed Duration: 404.864217042923
+Number of Threads: 5 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+Best: -0.224999 using {'colsample_bytree': 0.18, 'gamma': 0, 'learning_rate': 0.1, 'max_depth': 1, 'n_estimators': 300, 'objective': 'binary:logistic', 'reg_alpha': 0.2, 'reg_lambda': 0.4, 'subsample': 1.0}
+Elapsed Duration: 580.1646287441254
+Number of Threads: 4 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+Best: -0.224999 using {'colsample_bytree': 0.18, 'gamma': 0, 'learning_rate': 0.1, 'max_depth': 1, 'n_estimators': 300, 'objective': 'binary:logistic', 'reg_alpha': 0.2, 'reg_lambda': 0.4, 'subsample': 1.0}
+Elapsed Duration: 735.8789322376251
+Number of Threads: 3 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+Best: -0.224999 using {'colsample_bytree': 0.18, 'gamma': 0, 'learning_rate': 0.1, 'max_depth': 1, 'n_estimators': 300, 'objective': 'binary:logistic', 'reg_alpha': 0.2, 'reg_lambda': 0.4, 'subsample': 1.0}
+Elapsed Duration: 1357.541701555252
+Number of Threads: 2 with StratifiedKFold(n_splits=10, random_state=None, shuffle=False) KFolds
+srun: Force Terminated job 12523110
+srun: Job step aborted: Waiting up to 92 seconds for job step to finish.
+srun: error: d0085: task 0: Killed
+
