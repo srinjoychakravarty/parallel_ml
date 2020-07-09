@@ -12,8 +12,8 @@ import time
 data = read_csv('train.csv')
 dataset = data.values
 
-X = dataset[:12000, 0:94]   # split data into X and y and sampling from total row entries to save time
-y = dataset[:12000, 94]     
+X = dataset[:25000, 0:94]   # split data into X and y and sampling from total row entries to save time
+y = dataset[:25000, 94]     
 
 label_encoded_y = LabelEncoder().fit_transform(y) 
 
@@ -56,4 +56,4 @@ for i, value in enumerate(learning_rate):
 pyplot.legend()
 pyplot.xlabel('number_of_trees')
 pyplot.ylabel('Log Loss')
-pyplot.savefig('number_of_trees_vs_learning_rate.png')
+pyplot.savefig('number_of_trees_x_axis_vs_log_loss_y_axis')
