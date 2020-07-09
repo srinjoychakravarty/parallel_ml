@@ -54,7 +54,6 @@ if __name__=='__main__':
     y = test[:, 64]                                                         # y = 3,823 shallow-copy rows from "optdigits.txt" and the last(64th) column from "optdigits.txt"
     kfolds = 5
     t1 = time()
-    print(t1)
     parallel_tuning_process(kfolds, X, y)
     # best_tuning_param = parallel_tuning_process(spawn_count, kfolds, X, y)     
     # print('Best tuning param %0.6f.'% best_tuning_param)
