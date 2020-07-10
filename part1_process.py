@@ -5,11 +5,6 @@ import numpy as np
 from time import time
 import json                                           
 
-def foo(i):
-    print ('called function in process: %s' %i)
-    print(os.getpid())
-    return
-
 def cvkfold(X, y, tuning_params, partitions, k):
     '''uses kfolds to cross validate training and test datasets'''
     n_tuning_params = tuning_params.shape[0]                                # n_tuning_params = 10 (default)
