@@ -62,8 +62,5 @@ if __name__=='__main__':
     print('Process runs in %0.9f seconds.' % (elapsed))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
     results_dict = {'Cpu Count':  multiprocessing.cpu_count(), 'Runtime': elapsed}
     print(results_dict)
-    with open("sample_file.json", "r+") as file:
-        data = json.load(file)
-        data.update(results_dict)
-        file.seek(0)
-        json.dump(data, file)
+    with open('data.txt', 'w') as outfile:
+    	json.dump(results_dict, outfile)
