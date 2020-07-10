@@ -110,8 +110,8 @@ if __name__ == "__main__":
         
     cpu_count = [1, 2, 3, 4, 5, 6, 7, 8]
     times_elapsed = [t1_duration, t2_duration, t3_duration, t4_duration, t5_duration, t6_duration, t7_duration, t8_duration]
-    pyplot.plot(cpu_count, times_elapsed, label = 'cpu wall times: ')
+    pyplot.plot(cpu_count, times_elapsed, label = 'multiprocessing.Pool wall clock times: ')
     pyplot.legend()
     pyplot.xlabel('CPU Count')
     pyplot.ylabel('Runtimes ')
-    pyplot.savefig('cpu_count_x_axis_vs_runtimes_y_axis')
+    pyplot.savefig('cpu_count_x_axis_vs_mp_pool_runtimes_y_axis')

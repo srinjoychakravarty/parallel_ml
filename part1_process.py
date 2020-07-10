@@ -1,5 +1,7 @@
 import multiprocessing, os										
-import matplotlib.pyplot as plt                                
+import matplotlib
+matplotlib.use('Agg')                                           # prevents matplotlib error on discovery cluster
+from matplotlib import pyplot                                   # helps to plot data
 from sklearn import svm                                         
 import numpy as np                                              
 from time import time
@@ -57,5 +59,12 @@ if __name__=='__main__':
     print('Process runs in %0.9f seconds.' % (elapsed))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
     results_dict = {'Cpu Count':  multiprocessing.cpu_count(), 'Runtime': elapsed}
     print(results_dict)
+    cpu_count = [8, 7, 6, 5, 4, 3, 2, 1]
+    times_elapsed = [5.291589260101318, 5.274212121963501, 5.3853960037231445, 5.350943326950073, 7.574889183044434, 8.657461166381836, 11.808668375015259, 26.79225444793701]
+    pyplot.plot(cpu_count, times_elapsed, label = 'multiprocessing.Process wall clock times')
+    pyplot.legend()
+    pyplot.xlabel('CPU Count')
+    pyplot.ylabel('Runtimes ')
+    pyplot.savefig('cpu_count_x_axis_vs_mp_process_runtimes_y_axis')
     with open('runtime.txt', 'a+') as outfile:
         json.dump(results_dict, outfile)

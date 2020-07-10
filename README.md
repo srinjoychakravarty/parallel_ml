@@ -1,3 +1,11 @@
+| Warning! :warning: To generate clock runtimes for multiprocess.Process() using different variations of CPUs specify using the --cpus-per-task slurm flag ! |
+| --- |
+
+When requesting your compute node for each iteration:
+```bash
+srun -p short --cpus-per-task 2 --pty --export=ALL --mem=180Gb --time=08:00:00 /bin/bash
+```
+
 1. **Connect** to your Discovery Cluster
 ```bash
 ssh -Y chakravarty.s@login.discovery.neu.edu
@@ -21,7 +29,7 @@ Last login: Tue Jul  7 01:44:21 2020 from 75.69.107.191
 
 3.**Request** a cluster that allows you upto 56 CPUs per Task
 ```bash
-srun -p short -N 1 -n 1 -c 56 --pty --export=ALL --mem=10Gb --time=08:00:00 /bin/bash
+srun -p short -N 1 -n 1 -c 56 --cpus-per-task 56 --pty --export=ALL --mem=10Gb --time=08:00:00 /bin/bash
 
 srun: job 12519808 queued and waiting for resources
 srun: job 12519808 has been allocated resources
