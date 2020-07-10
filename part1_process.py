@@ -10,7 +10,7 @@ def cvkfold(X, y, tuning_params, partitions, k):
     n_tuning_params = tuning_params.shape[0]                                # n_tuning_params = 10 (default)
     partition = partitions[k]                                               # for each k-fold round in the 'cvkfold' loop takes the random 'partitions' array passed in    
     
-    #  X.shape[0] -> number of rows
+    # X.shape[0] -> number of rows
     # np.arange(0, X.shape[0]) -> 0,1,.....3,823
     Train = np.delete(np.arange(0, X.shape[0]), partition)                  # unions the other partitions into the training set and removes the test partition set
     
@@ -57,5 +57,5 @@ if __name__=='__main__':
     print('Process runs in %0.9f seconds.' % (elapsed))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
     results_dict = {'Cpu Count':  multiprocessing.cpu_count(), 'Runtime': elapsed}
     print(results_dict)
-    with open('data.txt', 'w') as outfile:
-    	json.dump(results_dict, outfile)
+    with open('runtime.txt', 'a+') as outfile:
+        json.dump(results_dict, outfile)

@@ -1,8 +1,10 @@
-import matplotlib.pyplot as plt                                 # helps to plot data
 from sklearn import svm                                         # native support vector machine library in python
 import multiprocessing                                          # native library import for python multiprocessing
 import numpy as np                                              # efficient big data structure in python
 from time import time                                           # measure algorithm performance using wall clocks
+import matplotlib
+matplotlib.use('Agg')                                           # prevents matplotlib error on discovery cluster
+from matplotlib import pyplot                                   # helps to plot data
 
 def plot_digits(X, y):
     '''Plot some of the digits'''
@@ -51,22 +53,65 @@ if __name__ == "__main__":
     y = test[:, 64]                                                         # y = 3,823 shallow-copy rows from "optdigits.txt" and the last(64th) column from "optdigits.txt"
     cpu_count = 1
     kfolds = 5
-    t1 = time()                                                             # starts the timer for 1 cpu test
+    t1_start = time()                                                             # starts the timer for 1 cpu test
     best_tuning_param = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t1_duration = time() - t1_start
     print('Best tuning param %0.6f.'% best_tuning_param)
-    print('Serial runs in %0.3f seconds.' % (time() - t1))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
+    print('Serial runs in %0.3f seconds.' % (t1_duration))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
+    
     cpu_count = 2
-    t2 = time()                                                             # starts the timer for 2 cpu test
+    t2_start = time()                                                             
     best_tuning_param_2 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t2_duration = time() - t2_start
     print('Best tuning param %0.6f.'% best_tuning_param_2)
-    print('2 CPU Pool runs in %0.3f seconds.' % (time() - t2))              # prints the wall clock time of 2 cpu cross validation hyperparameter tuning
+    print('2 CPU Pool runs in %0.3f seconds.' % (t2_duration))             
+    
+    cpu_count = 3
+    t3_start = time()                                                             
+    best_tuning_param_3 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t3_duration = time() - t3_start
+    print('Best tuning param %0.6f.'% best_tuning_param_3)
+    print('3 CPU Pool runs in %0.3f seconds.' % (t3_duration))              
+     
     cpu_count = 4
-    t4 = time()                                                             # starts the timer for 4 cpu test
+    t4_start = time()                                                             
     best_tuning_param_4 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t4_duration = time() - t4_start
     print('Best tuning param %0.6f.'% best_tuning_param_4)
-    print('4 CPU Pool runs in %0.3f seconds.' % (time() - t4))              # prints the wall clock time of 2 cpu cross validation hyperparameter tuning
+    print('4 CPU Pool runs in %0.3f seconds.' % (t4_duration))              
+    
+    cpu_count = 5
+    t5_start = time()                                                             
+    best_tuning_param_5 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t5_duration = time() - t5_start
+    print('Best tuning param %0.6f.'% best_tuning_param_5)
+    print('5 CPU Pool runs in %0.3f seconds.' % (t5_duration))        
+
+    cpu_count = 6
+    t6_start = time()                                                             
+    best_tuning_param_6 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t6_duration = time() - t6_start
+    print('Best tuning param %0.6f.'% best_tuning_param_6)
+    print('6 CPU Pool runs in %0.3f seconds.' % (t6_duration))    
+
+    cpu_count = 7
+    t7_start = time()                                                             
+    best_tuning_param_7 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t7_duration = time() - t7_start
+    print('Best tuning param %0.6f.'% best_tuning_param_7)
+    print('7 CPU Pool runs in %0.3f seconds.' % (t7_duration))         
+
     cpu_count = 8
-    t8 = time()                                                             # starts the timer for 8 cpu test
+    t8_start = time()                                                             # starts the timer for 8 cpu test
     best_tuning_param_8 = parallel_tuning_pool(cpu_count, kfolds, X, y)
+    t8_duration = time() - t8_start
     print('Best tuning param %0.6f.'% best_tuning_param_8)
-    print('8 CPU Pool runs in %0.3f seconds.' % (time() - t8))              # prints the wall clock time of 2 cpu cross validation hyperparameter tuning
+    print('8 CPU Pool runs in %0.3f seconds.' % (t8_duration))              # prints the wall clock time of 8 cpu cross validation hyperparameter tuning
+        
+    cpu_count = [1, 2, 3, 4, 5, 6, 7, 8]
+    times_elapsed = [t1_duration, t2_duration, t3_duration, t4_duration, t5_duration, t6_duration, t7_duration, t8_duration]
+    pyplot.plot(cpu_count, times_elapsed, label = 'cpu wall times: ')
+    pyplot.legend()
+    pyplot.xlabel('CPU Count')
+    pyplot.ylabel('Runtimes ')
+    pyplot.savefig('cpu_count_x_axis_vs_runtimes_y_axis')
