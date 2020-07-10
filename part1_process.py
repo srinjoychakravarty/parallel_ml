@@ -2,7 +2,8 @@ import multiprocessing, os
 import matplotlib.pyplot as plt                                
 from sklearn import svm                                         
 import numpy as np                                              
-from time import time                                           
+from time import time
+import json                                           
 
 def foo(i):
     print ('called function in process: %s' %i)
@@ -57,4 +58,12 @@ if __name__=='__main__':
     parallel_tuning_process(kfolds, X, y)
     # best_tuning_param = parallel_tuning_process(spawn_count, kfolds, X, y)     
     # print('Best tuning param %0.6f.'% best_tuning_param)
-    print('Process runs in %0.9f seconds.' % (time() - t1))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
+    elapsed = (time() - t1)
+    print('Process runs in %0.9f seconds.' % (elapsed))                  # prints the wall clock time of 1 cpu cross validation hyperparameter tuning
+    results_dict = {'Cpu Count':  multiprocessing.cpu_count(), 'Runtime': elapsed}
+    print(results_dict)
+    with open("sample_file.json", "r+") as file:
+        data = json.load(file)
+        data.update(results_dict)
+        file.seek(0)
+        json.dump(data, file)
